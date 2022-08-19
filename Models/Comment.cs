@@ -4,6 +4,7 @@ namespace CommentRating.Models
 {
     public class Comment
     {
+        public int Id { get; set; }
 
         [Required]
         public string Title { get; set; }
