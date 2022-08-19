@@ -32,12 +32,14 @@ namespace CommentRating.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Add(CommentViewModel vm)
         {
+            var id = vm.Id;
             var description = vm.Description;
             var title = vm.Title;
             var rating = vm.Rating;
 
             Comment artComment = new Comment()
             {
+                Id = id,
                 Title = title,
                 Description = description,
                 Rating = rating
@@ -175,7 +177,7 @@ namespace CommentRating.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool CommentExists(int id)
