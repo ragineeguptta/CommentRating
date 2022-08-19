@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+.dl-horizontal dt { white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea { max-width: 280px; }
+
+
+.commentBox { background-color: #efefef; padding: 10px; border-radius: 10px; }
+
+.starFade { background-image: url('/image/StarFade.gif'); min-width: 30px; min-height: 30px; display: inline-block; cursor: pointer; }
+
+.starFadeN { background-image: url('/image/StarFade.gif'); min-width: 30px; min-height: 30px; display: inline-block; }
+
+.starGlow { background-image: url('/image/StarGlow.gif'); min-width: 30px; min-height: 30px; display: inline-block; cursor: pointer; }
+.starGlowN { background-image: url('/image/StarGlow.gif'); min-width: 30px; min-height: 30px; display: inline-block; }

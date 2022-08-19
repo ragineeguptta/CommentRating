@@ -1,0 +1,77 @@
+﻿@model CommentRating.ViewModel.CommentViewModel
+
+@{
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
+
+    decimal rating = 0;
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+    var totalRating = decimal.Parse(rating.ToString());
+}
+
+<h1>Ratings</h1>
+
+<div>
+    <span class="starFadeN" id="sRate1"></span>
+    <span class="starFadeN" id="sRate2"></span>
+    <span class="starFadeN" id="sRate3"></span>
+    <span class="starFadeN" id="sRate4"></span>
+    <span class="starFadeN" id="sRate5"></span>
+</div>
+
+@foreach(var c in Model.ListOfComments)
+            {
+                <hr />
+                <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        @for (var i = 1; i <= c.Rating; i++)
+                        {
+                            <span class="starGlowN"></span>
+                        }
+                        @for (var i = (c.Rating + 1); i <= 5; i++)
+                        {
+                            <span class="starFadeN"></span>
+                        }
+                    </div>
+                    <div class="col-9">
+                        @Html.Raw(c.Title.Replace("\n", "<br />"))
+                        @Html.Raw(c.Description.Replace("\n", "<br />"))
+                    </div>
+                </div>
+                </div>
+            }
+<hr />
+<partial name="_CommentBox" />
+
+<script>
+    function SCRate() {
+        for (var i = 1; i <= @totalRating; i++) {
+            $("#sRate" + i).attr('class', 'starGlowN');
+        }
+    }
+    $(function(){
+        SCRate();
+    });
+</script>
+<style>
+    .dl-horizontal dt { white-space: normal; }
+
+    /* Set width on the form input elements since they're 100% wide by default */
+    input,
+    select,
+    textarea { max-width: 280px; }
+
+
+    .commentBox { background-color: #efefef; padding: 10px; border-radius: 10px; }
+
+    .starFade { background-image: url('/image/StarFade.gif'); min-width: 30px; min-height: 30px; display: inline-block; cursor: pointer; }
+
+    .starFadeN { background-image: url('/image/StarFade.gif'); min-width: 30px; min-height: 30px; display: inline-block; }
+
+    .starGlow { background-image: url('/image/StarGlow.gif'); min-width: 30px; min-height: 30px; display: inline-block; cursor: pointer; }
+    .starGlowN { background-image: url('/image/StarGlow.gif'); min-width: 30px; min-height: 30px; display: inline-block; }
+</style>
