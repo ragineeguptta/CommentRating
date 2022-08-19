@@ -27,7 +27,7 @@
                 <hr />
                 <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12">
                         @for (var i = 1; i <= c.Rating; i++)
                         {
                             <span class="starGlowN"></span>
@@ -38,15 +38,18 @@
                         }
                     </div>
                     <div class="col-9">
-                        @Html.Raw(c.Title.Replace("\n", "<br />"))
-                        @Html.Raw(c.Description.Replace("\n", "<br />"))
+                        <h5>@c.Title</h5>
+                        <p>@c.Description</p>
+                            <input type="hidden"  value="@c.Id" />
+                            
+                            <a class="btn btn-danger text-white" asp-area="" asp-controller="Comments" asp-action="Delete" asp-route-id="@c.Id">Delete</a>
                     </div>
                 </div>
                 </div>
             }
 <hr />
 <partial name="_CommentBox" />
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     function SCRate() {
         for (var i = 1; i <= @totalRating; i++) {
